@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Icon from "@/components/ui/icon"
 import type { SectionProps } from "@/types"
 
-export default function Section({ id, title, subtitle, content, details, icon, isActive, showButton, buttonText }: SectionProps) {
+export default function Section({ id, title, subtitle, content, details, icon, links, isActive, showButton, buttonText }: SectionProps) {
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {icon && (
@@ -56,12 +56,33 @@ export default function Section({ id, title, subtitle, content, details, icon, i
           {details}
         </motion.p>
       )}
+      {links && links.length > 0 && (
+        <motion.div
+          className="flex flex-wrap gap-3 mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isActive ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          {links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 text-neutral-300 text-sm hover:border-[#FF4D00]/60 hover:text-white hover:bg-[#FF4D00]/10 transition-all"
+            >
+              <Icon name="ExternalLink" size={13} className="text-[#FF4D00]" />
+              {link.label}
+            </a>
+          ))}
+        </motion.div>
+      )}
       {showButton && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 md:mt-16"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-10 md:mt-14"
         >
           <Button
             variant="outline"

@@ -1,5 +1,10 @@
 import type { ReactNode } from "react"
 
+export interface SectionLink {
+  label: string
+  url: string
+}
+
 export interface Section {
   id: string
   title: string
@@ -7,6 +12,7 @@ export interface Section {
   content?: string
   details?: string
   icon?: string
+  links?: SectionLink[]
   showButton?: boolean
   buttonText?: string
 }
