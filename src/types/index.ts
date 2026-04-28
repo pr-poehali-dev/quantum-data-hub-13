@@ -12,6 +12,7 @@ export interface Section {
   content?: string
   details?: string
   icon?: string
+  image?: string
   links?: SectionLink[]
   showButton?: boolean
   buttonText?: string
