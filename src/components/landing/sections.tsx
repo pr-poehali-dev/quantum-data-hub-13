@@ -5,9 +5,7 @@ export const sections = [
     id: 'hero',
     subtitle: <Badge variant="outline" className="text-white border-white">Образовательный путеводитель</Badge>,
     title: "ИИ: от теории к практике.",
-    content: 'Разбираемся в видах искусственного интеллекта — понятно, структурировано и без лишнего жаргона.',
-    showButton: true,
-    buttonText: 'Начать изучение'
+    content: 'Разбираемся в видах искусственного интеллекта — понятно, структурировано и без лишнего жаргона.'
   },
   {
     id: 'ml',
