@@ -105,6 +105,7 @@ export default function Section({ id, title, subtitle, content, details, icon, i
               variant="outline"
               size="lg"
               className="text-[#FF4D00] bg-transparent border-[#FF4D00] hover:bg-[#FF4D00] hover:text-black transition-colors"
+              onClick={() => window.open('https://docs.google.com/document/d/1TZ1A_VuirwSFBymN_jV3g7IJcNDaaxvO/edit?usp=sharing&ouid=106771337967678137066&rtpof=true&sd=true', '_blank')}
             >
               {buttonText}
             </Button>
