@@ -86,7 +86,17 @@ export function Squares({
       ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
 
-    const updateAnimation = () => {
+    let lastTime = 0
+    const targetFPS = 30
+    const interval = 1000 / targetFPS
+
+    const updateAnimation = (timestamp: number) => {
+      requestRef.current = requestAnimationFrame(updateAnimation)
+
+      const delta = timestamp - lastTime
+      if (delta < interval) return
+      lastTime = timestamp - (delta % interval)
+
       const effectiveSpeed = Math.max(speed, 0.1)
 
       switch (direction) {
@@ -109,7 +119,6 @@ export function Squares({
       }
 
       drawGrid()
-      requestRef.current = requestAnimationFrame(updateAnimation)
     }
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -135,7 +144,7 @@ export function Squares({
     canvas.addEventListener("mouseleave", handleMouseLeave)
 
     resizeCanvas()
-    requestRef.current = requestAnimationFrame(updateAnimation)
+    requestRef.current = requestAnimationFrame((t) => updateAnimation(t))
 
     return () => {
       window.removeEventListener("resize", resizeCanvas)
